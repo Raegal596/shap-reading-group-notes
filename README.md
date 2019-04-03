@@ -1,7 +1,7 @@
 # SHAP Reading Group Notes
 Summary of the SHAP paper: A Unified Approach to Interpreting Model Predictions.
 
-Firstly, I highly recommend reading the author's (GitHub page)[https://github.com/slundberg/shap], possibly before (or instead of, if you're rushed) the paper. It provides some good examples of the applications of SHAP values, has a lot of pretty pictures, and will make it easy to play around with SHAP values yourself, which is the most interesting part.
+Firstly, I highly recommend reading the author's GitHub page (https://github.com/slundberg/shap), possibly before (or instead of, if you're rushed) the paper. It provides some good examples of the applications of SHAP values, has a lot of pretty pictures, and will make it easy to play around with SHAP values yourself, which is the most interesting part.
 
 ## Additive Feature Attribution Methods
 
