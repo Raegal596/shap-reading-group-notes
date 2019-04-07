@@ -4,6 +4,15 @@ Summary of the SHAP paper: A Unified Approach to Interpreting Model Predictions.
 Firstly, I highly recommend reading the author's GitHub page (https://github.com/slundberg/shap), possibly before (or instead of, if you're rushed) the paper. It provides some good examples of the applications of SHAP values, has a lot of pretty pictures, and will make it easy to play around with SHAP values yourself, which is the most interesting part.
 
 ## Additive Feature Attribution Methods
+The authors begin by defining a class of what they call additive feature attribution methods. These methods all assign each feature a contribution, which when added together gives the model prediction. The easiest way of thinking of this is in terms of the coefficients in linear regression, and they way they write equation 1 directly emulates that.
+
+They then proceed to point out that a whole series of explanatory models can be considered to belong to this class. The ones they mention in detail are: LIME, DeepLIFT, and Shapley values (calculated in a variety of ways). They then provide a brief overview of each.
+
+LIME functions by assuming that the local parameter space around a data point is approximately linear. They then permute the parameters, feed these altered data points through the model, and use the changes in model predictions to fit a weighted linear regression model, with the weights being determined by how far (using some arbitrary distance metric) the permuted data points are from the original.
+
+DeepLift is a method that applies specifically to neural networks and is similar to the backpropogation used to calculate gradients when training. It calculates the difference between the predictions made for a data point and some reference value (usually with the features all set to zero). It then uses a modified version of the chain rule to backpropogate this difference all the way to the input layer, where the values returned represent the feature's contribution to the prediction.
+
+Shapley values come from game theory, and calculate the contribution of each feature by switching it out with something else. They also consider the impact of switching features together to account for interactions between them, and they do this for all possible higher order interactions. They take the expectation value of all these, and use that as the contribution of the feature. This scales factorially with both the number of features, and the size of the dataset, so in practice it is usually truncated.
 
 ## Simple Properties Uniquely Determine Additive Feature Attributions
 This section focuses on some nice properties that we'd like the interpretable model to have. For the additive feature attribution methods, as they formally defined them earlier, there is only one (known as the Shapley values) have the following three properties:
